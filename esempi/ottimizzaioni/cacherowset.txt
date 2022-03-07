@@ -1,0 +1,36 @@
+Esempio tratto da DEV 76
+
+
+
+....
+
+private String cOldSQL = "";
+private CachedRowSet oOldTableSQL = null;
+
+protected String getField( String cField, String cQuery ) throws Throwable {
+
+   String cRet = "";
+
+   if( !cQuery.equals(cOldSQL) ){
+      cOldSQL = cQuery;
+
+      Statement internal = con.createStatement();
+      ResultSet tableSQL = internal.executeQuery( cQuery );
+
+      oOldTableSQL = new CachedRowSet();
+      oOldTableSQL.populate(tableSQL);
+
+      tableSQL.close();
+      internal.close();
+
+      if( !oOldTableSQL.next() )
+         oOldTableSQL = null;
+   }
+
+   if( oOldTableSQL!=null )
+      cRet = oOldTableSQL.getString( cField );
+
+   return cRet;
+}
+
+....

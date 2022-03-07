@@ -1,0 +1,8 @@
+String ins="insert into clienti(nome,cognome) values(?,?)";
+
+PreparedStatement stmtIns = con.prepareStatement(ins);
+
+stmtIns.setString( 1, "Matteo" );
+stmtIns.setString( 2, "Baccan" );
+
+stmtIns.executeUpdate();

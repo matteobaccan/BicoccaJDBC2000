@@ -1,0 +1,17 @@
+
+
+conn.createStatement();
+int rows = stmt.executeUpdate("INSERT INTO TAB1 (COL1) VALUES ('FIRST')");
+
+// set savepoint
+Savepoint svpt1 = conn.setSavepoint("SAVEPOINT_1");
+
+rows = stmt.executeUpdate("INSERT INTO TAB1 (COL1) VALUES ('SECOND')");
+
+...
+
+conn.rollback(svpt1);
+
+...
+
+conn.commit();
