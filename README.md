@@ -1,2 +1,3 @@
-# BicoccaJDBC2000
-Le mie slide realizzate per un evento Java alla Bicocca di Milano nel 2000
+# Java Flavour Day
+
+Le mie slide realizzate per un evento Java alla Bicocca di Milano il 24/11/2000
